@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 //import { Form } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Button } from 'react-bootstrap';
 
 export const Pagina1 = () => {
