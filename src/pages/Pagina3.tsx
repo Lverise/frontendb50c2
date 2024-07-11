@@ -2,15 +2,10 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { FormGroup, FormLabel } from 'react-bootstrap'
 import { useState } from "react"
+import { Persona } from "@/Interfaces/iPersona"
+import { registrarPersona } from "@/Firebase/Promesas"
 
-interface Persona{
-    nombre:string,
-    apellido:string,
-    rut:string,
-    correo:string,
-    fechaNacimiento:string,
-    edad:number
-}
+
 
 const initialState:Persona = {
     apellido:"",
@@ -26,9 +21,18 @@ export const Pagina3 = () => {
   
     const handlePersona = (name:string,value:string)=>{
         setPersona({...persona,[name]:value})
-
+        console.log(persona)
     }
-  
+  const registrar = ()=>{
+    registrarPersona(persona).then(()=>{
+        alert("Se registró con éxito")
+    }).catch((e)=>{
+        console.log(e);
+        alert("Algo ocurrió")
+    })
+  }
+
+
     return (
     <>
     <FormGroup>
@@ -41,7 +45,7 @@ export const Pagina3 = () => {
     <FormGroup>
         <Form.Label>Apellido:</Form.Label>
         <Form.Control type='text' placeholder='Ingrese su apellido'
-        name="apeliido"
+        name="apellido"
         onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}}/>
         <Form.Text></Form.Text>
     </FormGroup>
@@ -73,7 +77,8 @@ export const Pagina3 = () => {
         onChange={(e)=>{handlePersona(e.currentTarget.name,e.currentTarget.value)}}/>
         <Form.Text></Form.Text>
     </FormGroup>
-    <Button type='button' variant='success'>Registrar</Button>
+    <Button type='button' variant='success'
+    onClick={registrar}>Registrar</Button>
     </>
 )
 }
