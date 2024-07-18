@@ -7,6 +7,7 @@ export default function Home() {
       <Link href="/Pagina1">Pagina1</Link>
       <Link href= "/Pagina2">Calculadora</Link>
       <Link href="/Pagina3">Registro</Link>
+      <Link href="/Pagina4">Tabla</Link>
     </nav>
      <p>Hola</p>
      <p>Chao</p>

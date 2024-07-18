@@ -1,7 +1,11 @@
 import { obtenerPersonas } from '@/Firebase/Promesas'
 import { Persona } from '@/Interfaces/iPersona'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import { Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
+
 
 export const Pagina4 = () => {
     const [personas, setPersonas] = useState<Persona[]>([])
@@ -27,6 +31,7 @@ export const Pagina4 = () => {
                     <th>Correo</th>
                     <th>Fecha Nacimiento</th>
                     <th>Edad</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +45,12 @@ export const Pagina4 = () => {
                                 <td>{p.correo}</td>
                                 <td>{p.fechaNacimiento}</td>
                                 <td>{p.edad}</td>
+                                <td>
+                                    <Link href={{pathname:"Pagina5",query:{key:p.key}}}></Link>
+                                    <Button variant='warning'><FaRegEdit color='black'/></Button>
+                                    <Button variant='danger'><RiDeleteBin5Line color='black'/></Button>
+
+                                </td>
                             </tr>
                     
                         )
